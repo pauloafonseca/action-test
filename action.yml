@@ -1,5 +1,12 @@
 name: 'Create and test rego'
 description: 'Placeholder'
+inputs:
+  rego-policy-folder:
+    description: 'Rego policies folder'
+    required: false
+  rego-tests-folder:
+    description: 'Rego tests folder'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -7,7 +14,15 @@ runs:
       id: psomething
       shell: bash
       run: |
+        echo "ls of github.action_path"
         ls ${{ github.action_path }}
+        echo "ls"
         ls
         cd
+        echo "ls after cd"
         ls
+        echo "input policy folder"
+        echo "{{ inputs.rego-policy-folder }}"
+        echo "input tests folder"
+        echo "{{ inputs.rego-policy-folder }}"
+        
