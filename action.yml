@@ -18,6 +18,7 @@ runs:
       shell: bash
       run: |
         mkdir ./tmp
+        mkdir ./tmp/tests
         echo "echo ls"
         ls
         echo "echo ls ${{ inputs.rego-policy-folder }} {{ inputs.rego-policy-folder }}"
