@@ -6,10 +6,10 @@ inputs:
     required: true
   rego-policy-folder:
     description: 'Rego policies folder'
-    required: false
+    required: true
   rego-tests-folder:
     description: 'Rego tests folder'
-    required: false
+    required: true
 runs:
   using: "composite"
   steps:
@@ -18,18 +18,16 @@ runs:
       id: psomething
       shell: bash
       run: |
-        mkdir ./tmp
-        mkdir ./tmp/tests
+        mkdir /tmp/tests
         echo "echo ls"
         ls
         echo "echo ls ${{ inputs.rego-policy-folder }} {{ inputs.rego-policy-folder }}"
         ls ${{ inputs.rego-policy-folder }}
-        cat ${{ inputs.rego-policy-folder }}/*rego > ./tmp/rules.rego
+        cat ${{ inputs.rego-policy-folder }}/*rego > /tmp/rules.rego
         echo "echo rules.rego"
-        echo ./tmp/rules.rego
-        cat ${{ inputs.rego-tests-folder }}/*rego > ./tmp/tests/tests.rego
-        cat ./tmp/rules.rego > ${{ inputs.output-rego-file-path }}
+        echo /tmp/rules.rego
+        cat ${{ inputs.rego-tests-folder }}/*rego > /tmp/tests/tests.rego
+        cat /tmp/rules.rego > ${{ inputs.output-rego-file-path }}
         echo "echo ls"
         ls
-        rm -rf ./tmp
         
