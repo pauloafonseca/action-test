@@ -1,0 +1,13 @@
+name: 'Create and test rego'
+description: 'Placeholder'
+runs:
+  using: "composite"
+  steps:
+    - name: "Print something"
+      id: psomething
+      shell: bash
+      run: |
+        ls ${{ github.action_path }}
+        ls
+        cd
+        ls
