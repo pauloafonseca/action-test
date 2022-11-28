@@ -1,6 +1,9 @@
 name: 'Create and test rego'
 description: 'Placeholder'
 inputs:
+  output-rego-file-path:
+    description: 'Output rego file path'
+    required: true
   rego-policy-folder:
     description: 'Rego policies folder'
     required: false
@@ -24,5 +27,9 @@ runs:
         echo "input policy folder"
         echo ${{ inputs.rego-policy-folder }}
         echo "input tests folder"
-        echo ${{ inputs.rego-policy-folder }}
+        echo ${{ inputs.rego-tests-folder }}
+        mkdir ./tmp
+        cat ${{ inputs.rego-policy-folder }}/*rego > ./tmp/rules.rego
+        echo ./tmp/rules.rego
+        cat ${{ inputs.rego-tests-folder }}/*rego > ./tmp/tests/tests.rego
         
