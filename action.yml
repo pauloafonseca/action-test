@@ -13,6 +13,7 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/checkout@v2
     - name: "Print something"
       id: psomething
       shell: bash
