@@ -17,19 +17,13 @@ runs:
       id: psomething
       shell: bash
       run: |
-        echo "ls of github.action_path"
-        ls ${{ github.action_path }}
-        echo "ls"
-        ls
-        cd
-        echo "ls after cd"
-        ls
-        echo "input policy folder"
-        echo ${{ inputs.rego-policy-folder }}
-        echo "input tests folder"
-        echo ${{ inputs.rego-tests-folder }}
         mkdir ./tmp
         cat ${{ inputs.rego-policy-folder }}/*rego > ./tmp/rules.rego
+        echo "echo rules.rego"
         echo ./tmp/rules.rego
         cat ${{ inputs.rego-tests-folder }}/*rego > ./tmp/tests/tests.rego
+        cat ./tmp/rules.rego > ${{ inputs.output-rego-file-path }}
+        echo "echo ls"
+        ls
+        rm -rf ./tmp
         
