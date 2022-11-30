@@ -18,6 +18,6 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          echo "test" > "$(date +"%Y_%m_%d_%I_%M_%p").log"
+          echo "test" > ./"$(date +"%Y_%m_%d_%I_%M_%p").log"
           git add --a
           git push origin main
