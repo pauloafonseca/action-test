@@ -20,4 +20,5 @@ jobs:
         run: |
           echo "test" > ./"$(date +"%Y_%m_%d_%I_%M_%p").log"
           git add --a
+          git commit -m "test commit"
           git push origin main
