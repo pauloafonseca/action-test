@@ -19,6 +19,8 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo "test" > ./"$(date +"%Y_%m_%d_%I_%M_%p").log"
+          git config --global user.name ${{ secrets.GH_USER }}
+          git config --global user.email "${{ secrets.GH_MAIL }}"
           git add --a
           git commit -m "test commit"
           git push origin main
